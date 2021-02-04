@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlNavigatorPickNameContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/ivSmileyNavigator"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="70dp"
+            android:src="@drawable/ic_smiley_navigator"/>
+
+        <TextView
+            android:id="@+id/tvNavigatorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            android:textColor="@color/text_color"
+            android:layout_alignTop="@+id/ivSmileyNavigator"
+            android:layout_toEndOf="@+id/ivSmileyNavigator"
+            android:text="@string/hi_i_m_your_navigator_please_pick_a_nickname"/>
+
+        <ImageView
+            android:id="@+id/ivChevronText"
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="-8dp"
+            android:src="@mipmap/chevron"
+            android:layout_below="@+id/tvNavigatorText"
+            android:layout_alignStart="@+id/tvNavigatorText"/>
+
+        <EditText
+            android:id="@+id/etInputNickname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:layout_alignBottom="@+id/ivChevronText"
+            android:layout_alignTop="@+id/ivChevronText"
+            android:layout_toEndOf="@+id/ivChevronText"
+            android:layout_toStartOf="@+id/ivCheck" />
+
+        <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_below="@+id/tvNavigatorText"
+            android:layout_alignEnd="@+id/tvNavigatorText"
+            android:layout_alignBottom="@+id/ivChevronText"
+            android:src="@drawable/ic_raster"/>
+
+        <TextView
+            android:id="@+id/tvWarningMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/text_warning_color"
+            android:textSize="20sp"
+            android:visibility="gone"
+            android:text="@string/your_nickname_must_6_characters_1_capital_letter"
+            android:layout_below="@+id/ivChevronText"
+            android:layout_alignStart="@+id/tvNavigatorText"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlSuccessInputName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlNavigatorPickNameContainer">
+
+        <ImageView
+            android:id="@+id/ivSuccessSmiley"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="70dp"
+            android:src="@drawable/ic_success_smiley_navigator" />
+
+        <TextView
+            android:id="@+id/tvSuccessGreeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            android:text="@string/nice_to_meet_you_jarvis_now_you_can_continue"
+            android:layout_alignTop="@+id/ivSuccessSmiley"
+            android:layout_toEndOf="@+id/ivSuccessSmiley"/>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/white"
+            android:inputType="text|textNoSuggestions"
+            android:textAllCaps="false"
+            android:fontFamily="@font/lato"
+            android:textSize="20sp"
+            android:text="@string/continue_text"
+            android:background="@drawable/btn_background"
+            android:layout_below="@+id/tvSuccessGreeting"
+            android:layout_alignStart="@+id/tvSuccessGreeting"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

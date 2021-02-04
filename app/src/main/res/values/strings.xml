@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Movies</string>
+    <string name="app_version">Version %1$s</string>
+    <string name="title_introduction">Introduction</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_movie_detail">Movie Detail</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="username">%1$s:</string>
+    <string name="vote_value">%1$s/10</string>
+    <string name="comments">Comments</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="upcoming_movies">Upcoming Movies</string>
+    <string name="imdb_id">IMDB ID:</string>
+    <string name="vote">Vote:</string>
+    <string name="description">Description:</string>
+    <string name="hi_i_m_your_navigator_please_pick_a_nickname">Hi i\'m your navigator.\nPlease pick a nickname</string>
+    <string name="your_nickname_must_6_characters_1_capital_letter">Your nickname must:\n- 6 characters\n- 1 capital letter</string>
+    <string name="nice_to_meet_you_jarvis_now_you_can_continue">Nice to meet you %1$s\nNow you can continue</string>
+    <string name="continue_text">Continue</string>
+</resources>

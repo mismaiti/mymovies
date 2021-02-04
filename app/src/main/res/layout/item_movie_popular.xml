@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivMoviePoster"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H, 3:2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/movie_poster" />
+
+    <TextView
+        android:id="@+id/tvMovieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:fontFamily="@font/lato"
+        android:layout_marginTop="12dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintStart_toStartOf="@id/ivMoviePoster"
+        app:layout_constraintEnd_toEndOf="@id/ivMoviePoster"
+        app:layout_constraintTop_toBottomOf="@+id/ivMoviePoster"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

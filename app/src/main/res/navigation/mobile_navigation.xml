@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation android:id="@+id/mobile_navigation"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_splash">
+
+    <fragment
+        android:id="@+id/navigation_splash"
+        android:name="com.mismaiti.mymovies.ui.splash.SplashFragment"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_navigation_splash_to_navigation_introduction"
+            app:destination="@id/navigation_introduction"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_splash"
+            app:popUpToInclusive="true"/>
+<!--        <action-->
+<!--            android:id="@+id/action_navigation_splash_to_navigation_dashboard"-->
+<!--            app:destination="@id/navigation_dashboard"-->
+<!--            app:launchSingleTop="true"-->
+<!--            app:popUpTo="@id/navigation_splash"-->
+<!--            app:popUpToInclusive="true"/>-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_introduction"
+        android:name="com.mismaiti.mymovies.ui.introduction.IntroductionFragment"
+        android:label="@string/title_introduction"
+        tools:layout="@layout/fragment_introduction">
+        <action
+            android:id="@+id/action_navigation_introduction_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_introduction"
+            app:popUpToInclusive="true">
+
+            <argument
+                android:name="nickname"
+                app:argType="string"
+                android:defaultValue="Jarvis"/>
+
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.mismaiti.mymovies.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_movie_detail"
+            app:destination="@id/navigation_movie_detail">
+            <argument
+                android:name="movieId"
+                app:argType="long"
+                android:defaultValue="0L"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_movie_detail"
+        android:name="com.mismaiti.mymovies.ui.moviedetail.MovieDetailFragment"
+        android:label="@string/title_movie_detail"
+        tools:layout="@layout/fragment_moviedetail" >
+        <action
+            android:id="@+id/action_navigation_movie_detail_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+    </fragment>
+</navigation>
