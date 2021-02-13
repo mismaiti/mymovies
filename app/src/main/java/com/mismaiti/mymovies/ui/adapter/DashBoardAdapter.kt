@@ -134,31 +134,33 @@ class PopularMovieListViewHolder(
         }
     }
 
-    fun initAutoScroll() {
+    private fun initAutoScroll() {
         timer = Timer()
-        binding.rvListPopularMoview.post {
-            var position = 0
-            var isEnd = false
-            timer!!.scheduleAtFixedRate(object : TimerTask() {
-                override fun run() {
-                    if (position == listMovie?.size?.minus(1)) {
-                        isEnd = true
-                    } else if (position == 0) {
-                        isEnd = false
-                    }
+        with(binding.rvListPopularMoview) {
+            post {
+                var position = 0
+                var isEnd = false
+                    timer!!.scheduleAtFixedRate(object : TimerTask() {
+                        override fun run() {
+                            if (position == listMovie?.size?.minus(1)) {
+                                isEnd = true
+                            } else if (position == 0) {
+                                isEnd = false
+                            }
 
-                    if (!isEnd) {
-                        position++
-                    } else {
-                        position--
-                    }
-                    val handler = Handler(itemView.context.mainLooper)
-                    handler.post {
-                        binding.rvListPopularMoview.scrollToPosition(position)
-                    }
-                }
+                            if (!isEnd) {
+                                position++
+                            } else {
+                                position--
+                            }
+                            val handler = Handler(itemView.context.mainLooper)
+                            handler.post {
+                                binding.rvListPopularMoview.smoothScrollToPosition(position)
+                            }
+                        }
 
-            }, 2000, 4000)
+                    }, 2000, 4000)
+            }
         }
     }
 }

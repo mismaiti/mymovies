@@ -24,7 +24,6 @@ class IntroductionFragment : DaggerFragment() {
         savedInstanceState: Bundle?
     ): View {
         fragmentBinding = FragmentIntroductionBinding.inflate(inflater, container, false)
-
         return fragmentBinding.root
     }
 
@@ -34,7 +33,6 @@ class IntroductionFragment : DaggerFragment() {
         fragmentBinding.rlSuccessInputName.visibility = View.GONE
         fragmentBinding.ivCheck.visibility = View.INVISIBLE
         fragmentBinding.tvWarningMessage.visibility = View.GONE
-
         fragmentBinding.etInputNickname.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // do nothing
@@ -47,11 +45,14 @@ class IntroductionFragment : DaggerFragment() {
                             fragmentBinding.tvWarningMessage.visibility = View.VISIBLE
                             fragmentBinding.rlSuccessInputName.visibility = View.GONE
                             fragmentBinding.ivCheck.visibility = View.INVISIBLE
+                            fragmentBinding.tvSuccessGreeting.visibility = View.GONE
+
                         }
                         else -> {
                             fragmentBinding.tvWarningMessage.visibility = View.GONE
                             fragmentBinding.ivCheck.visibility = View.VISIBLE
                             fragmentBinding.rlSuccessInputName.visibility = View.VISIBLE
+                            fragmentBinding.tvSuccessGreeting.visibility = View.VISIBLE
                             fragmentBinding.tvSuccessGreeting.text =
                                 getString(R.string.nice_to_meet_you_jarvis_now_you_can_continue,
                                     fragmentBinding.etInputNickname.text.toString())

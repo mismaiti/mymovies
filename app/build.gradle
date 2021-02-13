@@ -26,6 +26,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "PREFIX_URL_IMG", "\"https://image.tmdb.org/t/p/original\""
+        buildConfigField "String", "IMDB_APIKEY", "\"6157533b0b8f89a9a85da30c921a903f\""
+        buildConfigField "String", "IMDB_BASE_URL", "\"https://api.themoviedb.org/3/\""
     }
 
     buildFeatures {
