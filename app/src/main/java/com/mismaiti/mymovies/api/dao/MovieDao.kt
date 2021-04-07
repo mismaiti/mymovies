@@ -1,5 +1,9 @@
 package com.mismaiti.mymovies.api.dao
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
 import com.google.gson.annotations.SerializedName
 
 data class MovieResult (
@@ -14,9 +18,7 @@ data class MovieDao (
     val imdbId: String?,
     @SerializedName("title")
     val movieTitle: String?,
-    @SerializedName("tagline")
     val tagline: String?,
-    @SerializedName("overview")
     val overview: String?,
     @SerializedName("vote_average")
     val voteAverage: Double?,

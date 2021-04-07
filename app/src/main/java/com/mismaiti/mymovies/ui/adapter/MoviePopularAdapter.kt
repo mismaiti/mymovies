@@ -15,6 +15,7 @@ import com.mismaiti.mymovies.api.dao.MovieDao
 import com.mismaiti.mymovies.databinding.ItemMoviePopularBinding
 import com.mismaiti.mymovies.databinding.ItemMovieUpcomingBinding
 import com.mismaiti.mymovies.ui.dashboard.DashboardFragmentDirections
+import com.mismaiti.mymovies.util.set
 
 class MoviePopularAdapter(private val context: Context?, private val listMovie: List<MovieDao>?) :
     RecyclerView.Adapter<PopularMovieViewHolder>() {
@@ -36,7 +37,7 @@ class MoviePopularAdapter(private val context: Context?, private val listMovie: 
     }
 }
 
-class PopularMovieViewHolder(val binding: ItemMoviePopularBinding, val context: Context?)
+class PopularMovieViewHolder(private val binding: ItemMoviePopularBinding, val context: Context?)
     : RecyclerView.ViewHolder(binding.root) {
 
     lateinit var navController: NavController
@@ -45,15 +46,17 @@ class PopularMovieViewHolder(val binding: ItemMoviePopularBinding, val context: 
         val imageUrl = BuildConfig.PREFIX_URL_IMG + movieDao.backdropPath
         var requestOptions = RequestOptions()
         requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(35))
-        Glide.with(context).load(imageUrl).apply(requestOptions)
-            .into(binding.ivMoviePoster)
+        with(binding) {
+            Glide.with(context).load(imageUrl).apply(requestOptions)
+                .into(ivMoviePoster)
 
-        binding.tvMovieTitle.text = movieDao.movieTitle
-        binding.root.setOnClickListener {
-            val action = DashboardFragmentDirections
-                .actionNavigationDashboardToNavigationMovieDetail(movieDao.movieId!!)
-            navController = Navigation.findNavController(it)
-            navController.navigate(action)
+            tvMovieTitle.set(movieDao.movieTitle)
+            root.setOnClickListener {
+                val action = DashboardFragmentDirections
+                    .actionNavigationDashboardToNavigationMovieDetail(movieDao.movieId!!)
+                navController = Navigation.findNavController(it)
+                navController.navigate(action)
+            }
         }
     }
 }

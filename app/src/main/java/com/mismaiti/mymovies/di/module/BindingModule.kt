@@ -29,5 +29,4 @@ abstract class BindingModule {
 
     @ContributesAndroidInjector
     abstract fun provideIntroductionFragment() : IntroductionFragment
-
 }

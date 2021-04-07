@@ -11,7 +11,7 @@ import com.mismaiti.mymovies.ui.adapter.MovieDetailPagerAdapter
 
 class MovieDetailFragment : Fragment() {
 
-    private var fragmentBinding: FragmentMoviedetailBinding? = null
+    lateinit var fragmentBinding: FragmentMoviedetailBinding
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -19,20 +19,27 @@ class MovieDetailFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         fragmentBinding = FragmentMoviedetailBinding.inflate(inflater, container, false)
-        fragmentBinding?.vpMovieDetail?.adapter = arguments?.let { MovieDetailPagerAdapter(activity, it.getLong("movieId")) }
-        fragmentBinding?.tlMovieDetail?.let {
-            TabLayoutMediator(it, fragmentBinding!!.vpMovieDetail) { tab, position ->
-                tab.text = when(position) {
-                    0 -> "Informasi"
-                    else -> "Komentar"
-                }
-            }.attach()
+        with(fragmentBinding) {
+            vpMovieDetail.adapter = arguments?.let { MovieDetailPagerAdapter(activity, it.getLong("movieId")) }
+            tlMovieDetail.let {
+                TabLayoutMediator(it, vpMovieDetail) { tab, position ->
+                    tab.text = when(position) {
+                        0 -> "Informasi"
+                        else -> "Komentar"
+                    }
+                }.attach()
+            }
         }
-        return fragmentBinding!!.root
+
+        return fragmentBinding.root
     }
 
     override fun onDestroyView() {
-        fragmentBinding = null
+        fragmentBinding.reset()
         super.onDestroyView()
     }
+}
+
+fun FragmentMoviedetailBinding.reset() {
+    vpMovieDetail.adapter = null
 }

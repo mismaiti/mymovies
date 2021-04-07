@@ -1,10 +1,8 @@
 package com.mismaiti.mymovies.ui.adapter
 
 import android.content.Context
-import android.os.CountDownTimer
 import android.os.Handler
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavController
@@ -24,6 +22,7 @@ import com.mismaiti.mymovies.databinding.ItemListMoviePopularBinding
 import com.mismaiti.mymovies.databinding.ItemMovieUpcomingBinding
 import com.mismaiti.mymovies.model.UIModel
 import com.mismaiti.mymovies.ui.dashboard.DashboardFragmentDirections
+import com.mismaiti.mymovies.ui.dashboard.DashboardViewModel
 import com.mismaiti.mymovies.util.GridItemDecoration
 import java.util.*
 

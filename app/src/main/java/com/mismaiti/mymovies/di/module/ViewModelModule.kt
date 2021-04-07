@@ -1,5 +1,7 @@
 package com.mismaiti.mymovies.di.module
 
+import android.app.Application
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mismaiti.mymovies.di.annotation.ViewModelKey
@@ -25,4 +27,7 @@ abstract class ViewModelModule {
 
     @Binds
     abstract fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    abstract fun bindContext(application: Application): Context
 }

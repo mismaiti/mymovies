@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mismaiti.mymovies.databinding.FragmentItemMovieCommentBinding
 import com.mismaiti.mymovies.ui.adapter.MovieReviewAdapter
@@ -18,7 +17,7 @@ class DetailCommentFragment(private val movieId: Long): DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     lateinit var detailInfoViewModel: DetailInfoViewModel
-    private var fragmentBinding: FragmentItemMovieCommentBinding? = null
+    lateinit var fragmentBinding: FragmentItemMovieCommentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,18 +25,25 @@ class DetailCommentFragment(private val movieId: Long): DaggerFragment() {
         savedInstanceState: Bundle?
     ): View {
         detailInfoViewModel =
-            ViewModelProviders.of(this,viewModelFactory).get(DetailInfoViewModel::class.java)
+            ViewModelProvider(this,viewModelFactory).get(DetailInfoViewModel::class.java)
         fragmentBinding = FragmentItemMovieCommentBinding.inflate(inflater, container, false)
-        fragmentBinding!!.rvMovieComments.layoutManager = LinearLayoutManager(context)
 
-        detailInfoViewModel.getListMovieComment(movieId).observe(viewLifecycleOwner, Observer {
-            fragmentBinding!!.rvMovieComments.adapter = MovieReviewAdapter(context, it.results)
-        })
-        return fragmentBinding!!.root
+        with(fragmentBinding) {
+            rvMovieComments.layoutManager = LinearLayoutManager(context)
+            detailInfoViewModel.getListMovieComment(movieId).observe(viewLifecycleOwner, Observer {
+                rvMovieComments.adapter = MovieReviewAdapter(context, it.results)
+            })
+        }
+
+        return fragmentBinding.root
     }
 
     override fun onDestroyView() {
-        fragmentBinding = null
+        fragmentBinding.reset()
         super.onDestroyView()
     }
+}
+
+fun FragmentItemMovieCommentBinding.reset() {
+    rvMovieComments.adapter = null
 }

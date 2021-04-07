@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.mismaiti.mymovies.BuildConfig
 import com.mismaiti.mymovies.R
 import com.mismaiti.mymovies.databinding.FragmentSplashBinding
+import com.mismaiti.mymovies.util.set
 import kotlin.concurrent.fixedRateTimer
 
 class SplashFragment : Fragment() {
@@ -24,7 +25,7 @@ class SplashFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         val fragmentBinding = FragmentSplashBinding.inflate(inflater, container, false)
-        fragmentBinding.textAppVersion.text = getString(R.string.app_version, BuildConfig.VERSION_NAME)
+        fragmentBinding.textAppVersion.set(getString(R.string.app_version, BuildConfig.VERSION_NAME))
         return fragmentBinding.root
     }
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mismaiti.mymovies.R
 import com.mismaiti.mymovies.api.dao.MovieReviewDao
 import com.mismaiti.mymovies.databinding.ItemMovieReviewBinding
+import com.mismaiti.mymovies.util.set
 
 class MovieReviewAdapter(private val context:Context?, private val listMovieReview: List<MovieReviewDao>):
     RecyclerView.Adapter<MovieCommentViewHolder>() {
@@ -24,14 +25,18 @@ class MovieReviewAdapter(private val context:Context?, private val listMovieRevi
     override fun getItemCount(): Int = listMovieReview.size
 }
 
-class MovieCommentViewHolder(val binding: ItemMovieReviewBinding)
+class MovieCommentViewHolder(private val binding: ItemMovieReviewBinding)
     : RecyclerView.ViewHolder(binding.root) {
 
         fun onBind(movieReviewDao: MovieReviewDao) {
-            binding.tvReviewAuthor.text = binding.root.context.getString(
-                R.string.username, movieReviewDao.authorDetail?.username)
+            with(binding) {
+                movieReviewDao.apply {
+                    tvReviewAuthor.set(root.context.getString(
+                        R.string.username, authorDetail?.username))
 
-            binding.tvReviewContent.text =
-                Html.fromHtml(movieReviewDao.content, Html.FROM_HTML_MODE_COMPACT)
+                    tvReviewContent.set(
+                        Html.fromHtml(content, Html.FROM_HTML_MODE_COMPACT).toString())
+                }
+            }
         }
 }
